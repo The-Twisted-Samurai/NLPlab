@@ -30,9 +30,8 @@ def cleantexts(docs):
     cleaned = []
     for doc in docs:
         cleaned.append(cleantext(doc))
-    
-    print("comment this test:.. ",cleaned)
+#     comment this test when this is in use
+    print(cleaned)
     return cleaned
 
-print("comment this test:")
 cleantexts(["this is a test", "kotak mahindra bank stock falls due to bad quarter"])
