@@ -1,26 +1,33 @@
-from spacy.pipeline import Tagger
-from spacy.lang.en import English
+import spacy
+import csv
+import sys
 
+# For pretty printing of tokenisation
 def print_table(doc):
-    header = '{:8} | {:8} | {:8} | {:8} | {:10} | {:8} | {:8} | {:8} |'.format("Text", "Lemma", "PoS", "Tag", "Dependency", "Shape", "Alpha", "Stop")
-    seperator = '-' * len(header)
+    header = '| {:8} | {:8} | {:8} | {:8} | {:10} | {:8} | {:8} | {:8} |'.format("Text", "Lemma", "PoS", "Tag", "Dependency", "Shape", "Alpha", "Stop")
+    separator = '-' * len(header)
 
     print(header)
-    print(seperator)
+    print(separator)
     
     for token in doc:
-        print('{:8} | {:8} | {:8} | {:8} | {:10} | {:8} | {:8} | {:8} |'.format(token.text, token.lemma_, token.pos_, token.tag_, token.dep_, token.shape_, token.is_alpha, token.is_stop))
+        print('| {:8} | {:8} | {:8} | {:8} | {:10} | {:8} | {:8} | {:8} |'.format(token.text, token.lemma_, token.pos_, token.tag_, token.dep_, token.shape_, token.is_alpha, token.is_stop))
+
+# Write tagged.csv to the current directory
+def write_csv(doc):
+    with open('tagged.csv', 'a', newline='') as csvfile:
+        writer = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+
+        for token in doc:
+            writer.writerow([token.text, token.lemma_, token.pos_, token.tag_, token.dep_, token.shape_, token.is_alpha, token.is_stop])
 
 
-nlp = English()
+# Load English as the language and get the text to be parsed
+nlp = spacy.load('en_core_web_sm')
+text = sys.argv[1]
 
-tagger = Tagger(nlp.vocab)
+doc = nlp(u'{}'.format(text))
+#doc = nlp(u"Kotak Mahindra stocks fall due to bad quarter")
 
-doc = nlp.make_doc(u"Kotak Mahindra stocks fall due to bad quarter.")
-
-print_table(doc)
-
-#for token in doc:
-#    print(token.text, token.lemma_, token.pos_, token.tag_, token.dep_,
-#          token.shape_, token.is_alpha, token.is_stop)
-#    print_table(token)
+write_csv(doc)
+#print_table(doc)
