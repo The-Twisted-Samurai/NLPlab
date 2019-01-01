@@ -19,7 +19,7 @@ def print_table(doc):
 # Write tagged.csv to the current directory
 def write_csv(doc):
     with open('tagged.csv', 'a', newline='') as csvfile:
-        writer = csv.writer(csvfile, delimiter=' ', quotechar='|')
+        writer = csv.writer(csvfile, delimiter=',', quotechar='|')
 
         for token in doc:
             writer.writerow([token.text, token.pos_, token.tag_, token.dep_])
