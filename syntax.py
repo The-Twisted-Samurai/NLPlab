@@ -1,10 +1,6 @@
 import csv
 from newsstream import titles, bodies  
 
-headlines = titles 
-summaries = bodies
-
-
 def score(text):
     db = csv.reader(open("scored.csv", mode='rt'), delimiter=',')
     sentence = text.split(' ')
@@ -15,8 +11,14 @@ def score(text):
             if word == row[0]:
                 scores.append(int(row[3]))
     return sum(scores)
+
 def score_syntax(docs):
     scores = []
     for k in docs:
         scores.append(score(k))
     return scores
+
+
+headlines = titles 
+summaries = bodies
+
