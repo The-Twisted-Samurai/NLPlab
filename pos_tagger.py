@@ -7,14 +7,14 @@ nlp = spacy.load('en_core_web_sm')
 
 # For pretty printing of tokenisation
 def print_table(doc):
-    header = '| {:10} | {:10} | {:10} | {:10} |'.format("Text", "PoS", "Tag", "Dependency")
+    header = '| {:10} | {:10} | {:10} |'.format("Text", "PoS", "Tag")
     separator = '-' * len(header)
 
     print(header)
     print(separator)
     
     for token in doc:
-        print('| {:10} | {:10} | {:10} | {:10} |'.format(token.text, token.pos_, token.tag_, token.dep_))
+        print('| {:10} | {:10} | {:10} |'.format(token.text, token.pos_, token.tag_))
 
 # Write tagged.csv to the current directory
 def write_csv(doc):
@@ -22,7 +22,7 @@ def write_csv(doc):
         writer = csv.writer(csvfile, delimiter=',', quotechar='|')
 
         for token in doc:
-            writer.writerow([token.text, token.pos_, token.tag_, token.dep_])
+            writer.writerow([token.text, token.pos_, token.tag_])
 
 # pos tagging for lists
 def pos_list(sentences):
