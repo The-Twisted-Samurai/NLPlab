@@ -6,3 +6,5 @@ from db_tools import remove_duplicates, clean_db
 headlines = titles 
 summaries = bodies
 pos_list(headlines)
+remove_duplicates("tagged.csv")
+clean_db("tagged.csv")
