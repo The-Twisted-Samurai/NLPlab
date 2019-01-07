@@ -18,7 +18,7 @@ stopwords = ["a", "about", "above", "above", "across", "after", "afterwards", "a
                           "thus", "to", "together", "too", "top", "toward", "towards", "twelve", "twenty", "two", "un", "under", "until", "up", "upon", "us", "very", 
                           "via", "was", "we", "well", "were", "what", "whatever", "when", "whence", "whenever", "where", "whereafter", "whereas", "whereby", "wherein",
                          "whereupon", "wherever", "whether", "which", "while", "whither", "who","whoever", "whole", "whom", "whose", "why", "will", "with", 
-                         "within", "without", "would", "yet","pay", "breakingviews","you","fall" ,"your", "yours", "yourself", "yourselves", "the", ",",":",";",".","-","\","'"]
+                         "within", "without", "would", "yet","pay", "breakingviews","you","fall" ,"your", "yours", "yourself", "yourselves", "the", ",",":",";",".","-","!","'","?"]
 
 def cleantext(doc):
     word_list = doc.split()
