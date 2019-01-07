@@ -78,8 +78,8 @@ trainer = req_h(q = None, sources = src, category = None,
                 pageSize = 100)
 
 newsstream(trainer)
-display = input("Display titles? [y/n]: ")
-if display == "y":
+display = input("Display titles? [Y/n]: ")
+if display == "":
         for headline in titles:
                 print("---")
                 print(headline)
