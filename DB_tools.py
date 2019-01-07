@@ -18,3 +18,4 @@ def clean_db(path):
         if row[0] not in stopwords:
             n.append(row)
     csv.writer(open(path, 'wt')).writerows(n)
+    
