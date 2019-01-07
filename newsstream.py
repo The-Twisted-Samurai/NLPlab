@@ -10,6 +10,7 @@ import csv
 import numpy as np
 import datetime as dt
 
+# ass
 
 news = NewsApiClient(api_key='edfe8d41e6f84e93971ae5d76b0c805f')
 report = str
