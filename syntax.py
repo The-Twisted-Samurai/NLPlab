@@ -1,10 +1,4 @@
 import csv
-from newsstream import titles, bodies  
-
-headlines = titles 
-summaries = bodies
-
-
 def score(text):
     db = csv.reader(open("scored.csv", mode='rt'), delimiter=',')
     sentence = text.split(' ')
