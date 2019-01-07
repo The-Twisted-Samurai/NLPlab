@@ -11,3 +11,10 @@ def remove_duplicates(filepath):
     writer = csv.writer(open(filepath, 'wt'))
     writer.writerows(new)
 
+def clean_db(path):
+    csv_reader = csv.reader(open(path, mode='rt'), delimiter=',')
+    n = []
+    for row in csv_reader:
+        if row[0] not in stopwords:
+            n.append(row)
+    csv.writer(open(path, 'wt')).writerows(n)
