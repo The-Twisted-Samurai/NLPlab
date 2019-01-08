@@ -7,6 +7,7 @@ def score(text):
         for word in sentence:
             if word == row[0]:
                 scores.append(int(row[3]))
+    print("")
     return sum(scores)
 
 def score_syntax(docs):
